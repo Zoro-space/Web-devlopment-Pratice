@@ -1,0 +1,38 @@
+//1. Write a program to read name and marks of n number of students from user and store them in a
+//file.
+#include<stdio.h>
+int main()
+{
+    
+    char ch;
+    char name[100];
+    int marks;
+    int n;
+    FILE *f;
+    f=fopen("mytext.txt","r");
+    if(f ==NULL)
+    {
+        printf("File doesn't exist");
+    }else{
+        printf("The content in file is...\n");
+        while((ch=fgetc(f)) !=EOF)
+        {
+            printf("%c",ch);
+        }
+
+    }
+    fclose(f); 
+     f=fopen("mytext.txt","w");
+    printf("\nEnter no of students:");
+    scanf("%d",&n);  
+    for(int i=0;i<n;i++)
+    {
+        printf("\nEnter the name %d:",i+1);
+        scanf("%s",name);
+        printf("Enter the marks %d:",i+1);
+        scanf("%d",&marks);
+        fprintf(f,"Name:%s\t Marks:%d\n",i,name,marks);
+
+    }
+    fclose(f);
+}
